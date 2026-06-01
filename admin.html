@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Math By Anoop</title>
+  <link rel="stylesheet" href="css/brand.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="chalkboard-theme">
+
+  <!-- Sticky Top App Bar -->
+  <div id="app-header-placeholder"></div>
+
+  <!-- Main Grid Workspace -->
+  <main class="container">
+    
+    <!-- Large Blackboard Hero Plaque -->
+    <div id="app-hero-placeholder"></div>
+
+    <!-- Administrative Tab Controls -->
+    <div class="tabs-navigation">
+      <button class="tab-btn active" onclick="switchAdminTab('students-tab')">👥 Students Manager</button>
+      <button class="tab-btn" onclick="switchAdminTab('tests-tab')">📝 MCQ Exams & Tests</button>
+      <button class="tab-btn" onclick="switchAdminTab('attendance-tab')">🗓 Attendance Ledger</button>
+      <button class="tab-btn" onclick="switchAdminTab('classes-tab')">📚 Lectures & Resources</button>
+    </div>
+
+    <!-- --- TAB 1: STUDENTS MANAGER --- -->
+    <section id="students-tab" class="tab-content active">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <input type="text" id="student-search-input" class="form-input" style="max-width:260px;" placeholder="Search by name or email...">
+        </div>
+        <button class="btn btn-primary" onclick="openStudentModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+          Add New Student
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table" id="students-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Date Registered</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="students-tbody">
+            <tr>
+              <td colspan="6" style="text-align:center; font-style:italic; padding:30px 0;">Loading students database...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- --- TAB 2: MCQ EXAMS & TESTS --- -->
+    <section id="tests-tab" class="tab-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <h3 style="margin:0; font-size:20px;">Created Timed Examinations</h3>
+        <button class="btn btn-primary" onclick="openTestModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Create New Test
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table" id="tests-table-data">
+          <thead>
+            <tr>
+              <th>Test ID</th>
+              <th>Title</th>
+              <th>Start Time</th>
+              <th>Duration</th>
+              <th>Status</th>
+              <th>Manage Exam</th>
+            </tr>
+          </thead>
+          <tbody id="tests-tbody">
+            <tr>
+              <td colspan="6" style="text-align:center; font-style:italic; padding:30px 0;">Loading examinations list...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- --- TAB 3: ATTENDANCE LEDGER --- -->
+    <section id="attendance-tab" class="tab-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex:1;">
+          <input type="date" id="attendance-date-filter" class="form-input" style="max-width:200px;">
+          <input type="text" id="attendance-search-filter" class="form-input" style="max-width:220px;" placeholder="Search student name...">
+          <button class="btn btn-secondary btn-sm" onclick="clearAttendanceFilters()">Reset</button>
+        </div>
+        <button class="btn btn-primary" onclick="exportAttendanceCSV()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV Report
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table" id="attendance-table-data">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Check-in Time</th>
+              <th>Student ID</th>
+              <th>Student Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-tbody">
+            <tr>
+              <td colspan="5" style="text-align:center; font-style:italic; padding:30px 0;">Loading attendance ledger...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- --- TAB 4: LECTURES & RESOURCES --- -->
+    <section id="classes-tab" class="tab-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <h3 style="margin:0; font-size:20px;">Study Materials & Class Resource Timetable</h3>
+        <button class="btn btn-primary" onclick="openClassModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Post New Class
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table" id="classes-table-data">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Topic / Title</th>
+              <th>Description</th>
+              <th>Resources</th>
+              <th>Edit / Delete</th>
+            </tr>
+          </thead>
+          <tbody id="classes-tbody">
+            <tr>
+              <td colspan="5" style="text-align:center; font-style:italic; padding:30px 0;">Loading lectures timetable...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- --- MODAL 1: ADD / EDIT STUDENT MODAL --- -->
+  <div class="modal-overlay" id="student-modal">
+    <div class="board-frame modal-box">
+      <button class="modal-close" onclick="closeStudentModal()">×</button>
+      <h3 style="margin-top:0;" id="student-modal-title">Add New Student Account</h3>
+      <form id="student-form">
+        <input type="hidden" id="student-edit-id">
+        <div class="form-group">
+          <label class="form-label" for="student-name">Full Name</label>
+          <input type="text" id="student-name" class="form-input" required placeholder="e.g. Riya Sen">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="student-email">Email Address</label>
+          <input type="email" id="student-email" class="form-input" required placeholder="e.g. riya@gmail.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="student-password" id="student-password-label">Password</label>
+          <input type="password" id="student-password" class="form-input" placeholder="e.g. Pass123">
+          <small style="color:var(--chalk-dim); font-size:11px; display:block; margin-top:4px;" id="student-password-help">Password must be at least 6 characters.</small>
+        </div>
+        <div class="form-group" id="student-active-group" style="display:none;">
+          <label class="form-label" for="student-active">Account Status</label>
+          <select id="student-active" class="form-input">
+            <option value="TRUE">Active</option>
+            <option value="FALSE">Deactivated</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Student Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- MODAL 2: ADD / EDIT TIMED TEST MODAL --- -->
+  <div class="modal-overlay" id="test-modal">
+    <div class="board-frame modal-box">
+      <button class="modal-close" onclick="closeTestModal()">×</button>
+      <h3 style="margin-top:0;" id="test-modal-title">Create New Examination</h3>
+      <form id="test-form">
+        <input type="hidden" id="test-edit-id">
+        <div class="form-group">
+          <label class="form-label" for="test-title">Examination Title</label>
+          <input type="text" id="test-title" class="form-input" required placeholder="e.g. Algebra & Coordinate Geometry Live Mock">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="test-start">Start Date & Time (ISO Local)</label>
+          <input type="datetime-local" id="test-start" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="test-duration">Duration (Minutes)</label>
+          <input type="number" id="test-duration" class="form-input" required placeholder="e.g. 60" min="1">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Examination</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- MODAL 3: MCQ QUESTION BUILDER / LIST MODAL --- -->
+  <div class="modal-overlay" id="questions-modal">
+    <div class="board-frame modal-box" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close" onclick="closeQuestionsModal()">×</button>
+      <h3 style="margin-top:0;" id="questions-modal-title">MCQ Questions Editor</h3>
+      
+      <!-- Questions List Frame -->
+      <div style="margin-bottom:24px; border-bottom:1px dashed var(--chalk-line); padding-bottom:16px;">
+        <h4 style="color:var(--accent); font-size:14px; margin: 0 0 12px 0;">Current Questions Timetable</h4>
+        <div id="questions-list-container" style="display:flex; flex-direction:column; gap:12px; max-height: 250px; overflow-y:auto; padding-right:6px;">
+          <p style="font-size:12px; color:var(--chalk-dim); font-style:italic;">No questions added yet.</p>
+        </div>
+      </div>
+
+      <!-- Add New Question form -->
+      <form id="question-form">
+        <input type="hidden" id="question-test-id">
+        <h4 style="color:var(--accent); font-size:14px; margin: 0 0 12px 0;">Add New MCQ Question</h4>
+        <div class="form-group">
+          <label class="form-label" for="q-text">Question Text (supports math formatting)</label>
+          <textarea id="q-text" class="form-input" rows="3" required placeholder="e.g. Solve for x: 3x + 5 = 20"></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="q-optA">Option A</label>
+            <input type="text" id="q-optA" class="form-input" required placeholder="Option A">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-optB">Option B</label>
+            <input type="text" id="q-optB" class="form-input" required placeholder="Option B">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="q-optC">Option C</label>
+            <input type="text" id="q-optC" class="form-input" required placeholder="Option C">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-optD">Option D</label>
+            <input type="text" id="q-optD" class="form-input" required placeholder="Option D">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="q-correct">Correct Option</label>
+            <select id="q-correct" class="form-input" required>
+              <option value="" disabled selected>Select Answer...</option>
+              <option value="A">Option A</option>
+              <option value="B">Option B</option>
+              <option value="C">Option C</option>
+              <option value="D">Option D</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="q-marks">Marks</label>
+            <input type="number" id="q-marks" class="form-input" required value="1" min="1">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save & Append MCQ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- MODAL 4: CLASS & RESOURCES MODAL --- -->
+  <div class="modal-overlay" id="class-modal">
+    <div class="board-frame modal-box" style="max-width:550px;">
+      <button class="modal-close" onclick="closeClassModal()">×</button>
+      <h3 style="margin-top:0;" id="class-modal-title">Post Study Lecture</h3>
+      <form id="class-form">
+        <input type="hidden" id="class-edit-id">
+        <div class="form-group">
+          <label class="form-label" for="class-title">Lecture Topic / Title</label>
+          <input type="text" id="class-title" class="form-input" required placeholder="e.g. Quadrilaterals & Circles Proofs">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="class-level">Class Level / Standard</label>
+            <select id="class-level" class="form-input" required>
+              <option value="IX">Class IX</option>
+              <option value="X">Class X</option>
+              <option value="XI">Class XI</option>
+              <option value="XII">Class XII</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="class-chapter">Chapter / Topic Section</label>
+            <input type="text" id="class-chapter" class="form-input" required placeholder="e.g. Quadratic Equations">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="class-desc">Short Summary / Description</label>
+          <textarea id="class-desc" class="form-input" rows="2" placeholder="Describe the topics discussed..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="class-date">Schedule Date</label>
+          <input type="date" id="class-date" class="form-input" required>
+        </div>
+
+        <!-- Dynamic resource linkages list -->
+        <div class="form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <label class="form-label" style="margin-bottom:0;">Attached Reference Links</label>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="addClassResourceRow()">+ Add Link</button>
+          </div>
+          <div id="class-resources-container" style="display:flex; flex-direction:column; gap:8px; max-height: 150px; overflow-y:auto; padding-right:4px;">
+            <!-- Row of link template injects here -->
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Publish Lecture</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer placeholder -->
+  <div id="app-footer-placeholder"></div>
+
+  <!-- Client Script Injections -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

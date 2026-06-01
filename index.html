@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math By Anoop - Smart Classroom & Live Test Web App</title>
+  <link rel="stylesheet" href="css/brand.css?v=1.1">
+  <link rel="stylesheet" href="css/styles.css?v=1.1">
+</head>
+
+<body class="chalkboard-theme">
+
+  <!-- Sticky Top Header Navigation -->
+  <header class="app-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo-fallback">M</div>
+        <h1 class="brand-name">Math By Anoop</h1>
+      </a>
+      <nav class="header-nav">
+        <button class="btn btn-primary btn-sm" onclick="openLoginModal()" id="header-signin-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <polyline points="10 17 15 12 10 7"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12"></line>
+          </svg>
+          Sign In
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. PUBLIC chalkboard HERO PANEL -->
+    <div class="board-frame public-hero-board" style="margin-bottom: 56px;">
+      <div class="public-hero-badge">Anoop Sir's Smart Classroom</div>
+      <h2 class="hero-title handwritten"
+        style="font-size: 46px; max-width: 800px; line-height: 1.15; margin-bottom: 16px;">
+        Smart Students Deserves <span style="color:var(--accent);">Smart Classes. </span>.
+      </h2>
+      <p class="hero-tagline"
+        style="font-size: 20px; max-width: 700px; line-height:1.6; margin-bottom: 28px; color: var(--accent); font-weight: 500; letter-spacing: 0.03em; border-bottom: 1px dashed rgba(201, 162, 75, 0.3); display: inline-block; padding-bottom: 8px;">
+
+      </p>
+
+      <div
+        style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-bottom: 40px; width: 100%; max-width:500px;">
+        <button class="btn btn-primary" onclick="openLoginModal()"
+          style="padding: 12px 28px; font-size:15px; flex:1; min-width: 180px;">
+          Enter Student Portal
+        </button>
+        <a id="hero-whatsapp-btn" target="_blank" class="btn btn-secondary"
+          style="padding: 12px 28px; font-size:15px; flex:1; min-width: 180px;">
+          Ask to Join Coaching
+        </a>
+      </div>
+
+      <!-- Vector SVG Theorem Centerpiece -->
+      <div class="hero-animation-container" id="pythagoras-animation-box"
+        style="width: 100%; max-width: 440px; height: 320px; border-style: solid; background-color: rgba(0,0,0,0.08);">
+        <!-- Pythagoras proof draws here -->
+      </div>
+    </div>
+
+    <!-- Chalk loop geometry line -->
+    <svg class="doodle-divider" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0,5 L 100,5" fill="none" stroke="rgba(242,239,233,0.18)" stroke-width="1" stroke-dasharray="3 3" />
+    </svg>
+
+    <!-- 2. COACHINGS USPs SECTIONS -->
+    <section>
+      <h3 class="usp-section-title">The Digital Smartboard Advantage</h3>
+      <p class="usp-section-subtitle">Specially optimized for mobile-first students and high-speed classroom terminals.
+      </p>
+
+      <div class="usp-grid">
+        <!-- USP Card 1: Class IX-XII Library -->
+        <div class="usp-card">
+          <div class="demo-screen">
+            <div class="lib-demo">
+              <!-- Folder row -->
+              <div class="lib-folder">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Class XII Calculus</span>
+              </div>
+              <!-- Folder expanded resource list -->
+              <div class="lib-list">
+                <div class="lib-item">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  <span>Limits_Intro.pdf</span>
+                </div>
+                <div class="lib-item active">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  <span>Integration_Notes.pdf</span>
+                </div>
+              </div>
+              <!-- Floating cursor dot pointer -->
+              <div class="lib-cursor"></div>
+              <!-- Glass preview drawer overlay popup -->
+              <div class="lib-preview">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"
+                  style="margin-bottom: 2px;">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>Opened Worksheet Preview!</span>
+                <small style="color:var(--accent); font-size:8px;">&int; f(x)dx loaded inline</small>
+              </div>
+            </div>
+          </div>
+          <h4 class="usp-title">Class IX - XII Library</h4>
+          <p class="usp-desc">Access reference books, study PDFs, and notes structured folder-wise by chapters and
+            classes.</p>
+        </div>
+
+        <!-- USP Card 2: Live Timed Exams -->
+        <div class="usp-card">
+          <div class="demo-screen">
+            <div class="exam-demo">
+              <!-- Top dial row -->
+              <div class="exam-demo-header">
+                <span>Calculus & Curves Mock</span>
+                <span class="exam-demo-timer">00:42</span>
+              </div>
+              <!-- Test MCQ question -->
+              <div class="exam-demo-q">Solve: x&sup2; - 9 = 0</div>
+              <!-- Options -->
+              <div class="exam-demo-options">
+                <div class="exam-demo-opt active">[x = 3]</div>
+                <div class="exam-demo-opt">[x = 6]</div>
+              </div>
+              <!-- Submit action -->
+              <div class="exam-demo-btn">SUBMIT EXAM</div>
+              <!-- Hand cursor -->
+              <div class="exam-demo-cursor"></div>
+              <!-- Instant Rank Display Badge Overlay -->
+              <div class="exam-demo-rank">
+                <div class="rank-star">&#9733;</div>
+                <div style="font-size:12px; font-weight:700; color:var(--accent);">RANK #1</div>
+                <div style="font-size:8px; color:var(--chalk-dim);">Live Leaderboard Gradings!</div>
+              </div>
+            </div>
+          </div>
+          <h4 class="usp-title">Live Timed Exams</h4>
+          <p class="usp-desc">Sit rigorous timed multiple choice tests with automatic scoring and strict anti-cheat
+            focus tracking safeguards.</p>
+        </div>
+
+        <!-- USP Card 3: Check-in Attendance -->
+        <div class="usp-card">
+          <div class="demo-screen">
+            <div class="att-demo">
+              <!-- Monthly Grid -->
+              <div class="att-demo-grid">
+                <div class="att-demo-cell checked">&checkmark;</div>
+                <div class="att-demo-cell checked">&checkmark;</div>
+                <div class="att-demo-cell checked">&checkmark;</div>
+                <div class="att-demo-cell animate-check">&checkmark;</div>
+              </div>
+              <!-- Smart checkin CTA -->
+              <div class="att-demo-panel">
+                <div class="att-demo-btn">TAP TO CHECK IN</div>
+                <div class="att-demo-streak">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#128293; 5 DAYS</div>
+              </div>
+              <!-- Hand cursor -->
+              <div class="att-demo-cursor"></div>
+            </div>
+          </div>
+          <h4 class="usp-title">Check-in Attendance</h4>
+          <p class="usp-desc">Log your classroom check-in in a single click. Keep full tracking of daily attendance
+            history.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chalk loop geometry line -->
+    <svg class="doodle-divider" viewBox="0 0 100 10" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0,5 L 100,5" fill="none" stroke="rgba(242,239,233,0.18)" stroke-width="1" stroke-dasharray="3 3" />
+    </svg>
+
+    <!-- 3. DETAILED COURSE DIRECTORY CARDS -->
+    <section style="margin-bottom: 56px;">
+      <h3 class="usp-section-title" style="margin-bottom: 32px;">Mathematics Syllabus Programs</h3>
+
+      <div class="dashboard-grid">
+
+        <!-- Class IX Program -->
+        <div class="board-frame" style="padding: 24px; text-align: center; border-width: 8px;">
+          <h4 style="font-size:24px; color: var(--accent); margin:0 0 8px 0;">Class IX</h4>
+          <p style="font-size:13px; color:var(--chalk-dim); margin-bottom:20px; min-height:60px;">Foundation geometry,
+            number systems, linear equations, and basic trigonometry proofs.</p>
+          <button class="btn btn-secondary btn-sm" onclick="openLoginModal()" style="width: 100%;">Access
+            Materials</button>
+        </div>
+
+        <!-- Class X Program -->
+        <div class="board-frame" style="padding: 24px; text-align: center; border-width: 8px;">
+          <h4 style="font-size:24px; color: var(--accent); margin:0 0 8px 0;">Class X</h4>
+          <p style="font-size:13px; color:var(--chalk-dim); margin-bottom:20px; min-height:60px;">Quadratic equations,
+            arithmetic progressions, coordinate geometry, and board exam mock papers.</p>
+          <button class="btn btn-secondary btn-sm" onclick="openLoginModal()" style="width: 100%;">Access
+            Materials</button>
+        </div>
+
+        <!-- Class XI Program -->
+        <div class="board-frame" style="padding: 24px; text-align: center; border-width: 8px;">
+          <h4 style="font-size:24px; color: var(--accent); margin:0 0 8px 0;">Class XI</h4>
+          <p style="font-size:13px; color:var(--chalk-dim); margin-bottom:20px; min-height:60px;">Sets & relations,
+            complex numbers, permutations, straight lines, and introduction to limits.</p>
+          <button class="btn btn-secondary btn-sm" onclick="openLoginModal()" style="width: 100%;">Access
+            Materials</button>
+        </div>
+
+        <!-- Class XII Program -->
+        <div class="board-frame" style="padding: 24px; text-align: center; border-width: 8px;">
+          <h4 style="font-size:24px; color: var(--accent); margin:0 0 8px 0;">Class XII</h4>
+          <p style="font-size:13px; color:var(--chalk-dim); margin-bottom:20px; min-height:60px;">Calculus (limits,
+            derivatives & integrals), vectors, 3D planes, and live joint mock rankings.</p>
+          <button class="btn btn-secondary btn-sm" onclick="openLoginModal()" style="width: 100%;">Access
+            Materials</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- --- PREMIUM SLIDING GLASS OVERLAY LOGIN MODAL --- -->
+  <div class="glass-overlay" id="landing-login-overlay">
+    <div class="sliding-modal-box">
+      <button class="modal-close" onclick="closeLoginModal()">×</button>
+
+      <div class="login-logo-container" style="margin-bottom: 24px;">
+        <div class="brand-logo-fallback"
+          style="width: 44px; height: 44px; font-size: 22px; border-radius: 6px; margin-bottom: 8px;">M</div>
+        <h3 class="login-title" style="font-size: 24px;">Student Login Terminal</h3>
+        <p class="login-subtitle" style="font-size: 13px;">Smart Students Deserves Smart Classes</p>
+      </div>
+
+      <!-- Login error alerts -->
+      <div id="login-error-alert"
+        style="display: none; background-color: rgba(195, 107, 92, 0.15); border: 1px solid var(--danger); color: var(--danger); padding: 12px; border-radius: 6px; font-size: 13px; margin-bottom: 20px; text-align: center;">
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" class="form-input" placeholder="e.g. riya@gmail.com" required
+            autocomplete="email">
+        </div>
+
+        <div class="form-group" style="position: relative; margin-bottom: 24px;">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="••••••••" required
+            autocomplete="current-password">
+          <button type="button" id="toggle-pw-btn"
+            style="position: absolute; right: 12px; bottom: 10px; background: none; border: none; color: var(--chalk-dim); cursor: pointer; font-size: 12px; padding: 4px;">SHOW</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;" id="login-submit-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <polyline points="10 17 15 12 10 7"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12"></line>
+          </svg>
+          Sign In
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer placeholder -->
+  <div id="app-footer-placeholder"></div>
+
+  <!-- Client Script Injections -->
+  <script src="js/config.js?v=1.1"></script>
+  <script src="js/api.js?v=1.1"></script>
+  <script src="js/auth.js?v=1.1"></script>
+  <script src="js/ui.js?v=1.1"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Session Redirect Guard
+      const session = auth.getSession();
+      if (session.token && session.userType) {
+        if (session.userType === "admin") {
+          window.location.href = "admin.html";
+        } else {
+          window.location.href = "student.html";
+        }
+        return;
+      }
+
+      // Initialize navbars, theorems drawer, footer, WhatsApp FAB, etc.
+      ui.initCommon(null);
+      ui.animatePythagoras();
+
+      // 3D Parallax Tilt Effect for USP Cards
+      const cards = document.querySelectorAll(".usp-card");
+      cards.forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left; // x position within element
+          const y = e.clientY - rect.top;  // y position within element
+
+          const xc = rect.width / 2;
+          const yc = rect.height / 2;
+
+          // Calculate angle values (-12 to 12 degrees)
+          const angleX = -12 * (y - yc) / yc;
+          const angleY = 12 * (x - xc) / xc;
+
+          // Set custom CSS variables on the card element
+          card.style.setProperty("--rx", `${angleX}deg`);
+          card.style.setProperty("--ry", `${angleY}deg`);
+
+          // Hover flash light coordinates
+          const xp = (x / rect.width) * 100;
+          const yp = (y / rect.height) * 100;
+          card.style.setProperty("--mx", `${xp}%`);
+          card.style.setProperty("--my", `${yp}%`);
+        });
+
+        card.addEventListener("mouseleave", () => {
+          // Reset tilt transition smoothly
+          card.style.setProperty("--rx", "0deg");
+          card.style.setProperty("--ry", "0deg");
+        });
+      });
+
+      // Configure public landing specific WhatsApp links
+      const ctaBtn = document.getElementById("hero-whatsapp-btn");
+      if (ctaBtn) {
+        const parsedNum = BRAND.whatsappNumber.replace(/[^0-9]/g, "");
+        const customMessage = encodeURIComponent("Hi Anoop Sir! I'm interested in joining your smart math class coaching. Please share the details.");
+        ctaBtn.href = `https://wa.me/${parsedNum}?text=${customMessage}`;
+      }
+
+      const form = document.getElementById("login-form");
+      const overlay = document.getElementById("landing-login-overlay");
+      const errorBox = document.getElementById("login-error-alert");
+      const pwInput = document.getElementById("password");
+      const pwToggle = document.getElementById("toggle-pw-btn");
+
+      // Modal Triggers
+      window.openLoginModal = function () {
+        errorBox.style.display = "none";
+        form.reset();
+        overlay.classList.add("active");
+      };
+
+      window.closeLoginModal = function () {
+        overlay.classList.remove("active");
+      };
+
+      // Close modal on background click
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          closeLoginModal();
+        }
+      });
+
+      // Password visibility toggles
+      pwToggle.addEventListener("click", () => {
+        if (pwInput.type === "password") {
+          pwInput.type = "text";
+          pwToggle.textContent = "HIDE";
+        } else {
+          pwInput.type = "password";
+          pwToggle.textContent = "SHOW";
+        }
+      });
+
+      // Form Submissions
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        errorBox.style.display = "none";
+
+        const email = document.getElementById("email").value;
+        const password = pwInput.value;
+
+        api.showLoader("Opening classroom door...");
+        const success = await auth.login(email, password);
+        api.hideLoader();
+
+        if (!success) {
+          errorBox.textContent = "Incorrect credentials or deactivated student account. Please verify details and try again.";
+          errorBox.style.display = "block";
+          ui.showToast("Authentication Failed!", "error");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

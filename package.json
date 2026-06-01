@@ -1,0 +1,12 @@
+{
+  "name": "math-by-anoop",
+  "version": "1.0.0",
+  "description": "Math By Anoop - Smart Classroom & Live Test Web App",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8282 -c-1"
+  },
+  "keywords": [],
+  "author": "Math By Anoop",
+  "license": "ISC"
+}

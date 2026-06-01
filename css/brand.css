@@ -1,0 +1,183 @@
+/* 
+ * Math By Anoop - Brand CSS Tokens & Chalkboard Theme
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Core brand palette */
+  --slate-bg:        #9BA2AC;  /* logo background slate-blue-grey */
+  --slate-deep:      #6E7681;  /* deeper slate for gradients */
+  --bronze:          #473E37;  /* primary tool bronze */
+  --bronze-dark:     #3E3631;  /* darker bronze / shadows */
+  --bronze-light:    #6A5D52;  /* lighter bronze for hovers */
+  --bronze-metal:    #8A7B6B;  /* highlighted metal edge */
+
+  /* Digital board surface (primary working theme) */
+  --board:           #2B2622;  /* dark bronze-charcoal "smart board" */
+  --board-2:         #211D1A;  /* deeper board for depth */
+  --chalk:           #F2EFE9;  /* off-white chalk text */
+  --chalk-dim:       #C9C3B8;  /* dimmed chalk */
+  --chalk-line:      rgba(242, 239, 233, 0.08); /* faint chalk gridlines */
+
+  /* Accents */
+  --accent:          #C9A24B;  /* warm brass/gold accent for CTAs, highlights */
+  --accent-soft:     rgba(201, 162, 75, 0.15);
+  --success:         #7FA86B;
+  --danger:          #C36B5C;
+
+  /* Typography */
+  --font-head:       "Fraunces", "Playfair Display", Georgia, serif;
+  --font-body:       "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-math:       "STIX Two Math", "Cambria Math", Georgia, serif;
+
+  /* Layout Standards */
+  --radius:          16px;
+  --radius-sm:       8px;
+  --shadow:          0 10px 40px rgba(0, 0, 0, 0.35);
+  --transition:      all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Chalkboard Base Reset */
+body.chalkboard-theme {
+  background-color: var(--board-2);
+  color: var(--chalk);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: 
+    linear-gradient(var(--chalk-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--chalk-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blackboard grid container helper */
+.board-grid {
+  background-image: 
+    linear-gradient(var(--chalk-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--chalk-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Wood Chalkboard Frame Container */
+.board-frame {
+  border: 14px solid var(--bronze-dark);
+  outline: 2px solid var(--bronze-metal);
+  border-radius: 8px;
+  box-shadow: var(--shadow), inset 0 0 40px rgba(0, 0, 0, 0.8);
+  background: radial-gradient(circle, var(--board) 0%, var(--board-2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft board texture overlay */
+.board-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(rgba(242, 239, 233, 0.02) 1px, transparent 0);
+  background-size: 4px 4px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Fonts and Typography rules */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--chalk);
+  letter-spacing: -0.01em;
+}
+
+.math-text {
+  font-family: var(--font-math);
+  font-style: italic;
+}
+
+.handwritten {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulseLive {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(201, 162, 75, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(201, 162, 75, 0);
+  }
+}
+
+@keyframes floatIndicator {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes flowChalk {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.pulsing-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulseLive 2s infinite;
+}
+
+.pulse-success {
+  background-color: var(--success) !important;
+  animation: pulseLive 2s infinite;
+}
+
+/* Accessibility Support for Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .pulsing-dot {
+    animation: none !important;
+    box-shadow: 0 0 4px var(--accent) !important;
+  }
+}

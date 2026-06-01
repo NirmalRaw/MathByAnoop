@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard Results - Math By Anoop</title>
+  <link rel="stylesheet" href="css/brand.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="chalkboard-theme">
+
+  <!-- Sticky Top App Bar -->
+  <div id="app-header-placeholder"></div>
+
+  <!-- Leaderboard Content Section -->
+  <main class="container" style="padding-top: 32px; max-width: 800px;">
+    
+    <div class="board-frame" style="padding: 40px; margin-bottom: 24px; position: relative;">
+      
+      <!-- Math doodles decor -->
+      <div style="position: absolute; top: 12px; right: 24px; font-family: var(--font-math); font-size: 38px; color: var(--chalk-line); user-select:none; pointer-events:none;">
+        ∑ x = n(n+1)/2
+      </div>
+
+      <div style="text-align: center; margin-bottom: 32px; border-bottom: 1px dashed var(--chalk-line); padding-bottom: 24px;">
+        <div style="font-size: 14px; font-weight:700; color: var(--accent); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Leaderboard</div>
+        <h2 style="font-size: 32px; margin: 0 0 8px 0;" id="leaderboard-test-title">Examination Results</h2>
+        <p style="font-size: 14px; color: var(--chalk-dim); margin: 0;" id="leaderboard-test-meta">Analyzing ranks on board...</p>
+      </div>
+
+      <!-- LOCKED / PENDING STATE BOX -->
+      <div id="results-locked-container" style="display: none; text-align: center; padding: 40px 0;">
+        <div style="margin-bottom: 20px; color: var(--accent);">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation: floatIndicator 3s infinite ease-in-out;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <h3 class="handwritten" style="font-size: 24px; margin: 0 0 12px 0; color: var(--accent);">Leaderboard is currently locked!</h3>
+        <p style="color: var(--chalk-dim); font-size:15px; margin: 0 0 24px 0; line-height: 1.6;" id="results-lock-message">
+          Results will be calculated and unlocked once the exam time window ends at HH:MM.
+        </p>
+        <div style="display:flex; justify-content:center;">
+          <a href="student.html" class="btn btn-secondary">Return to Dashboard</a>
+        </div>
+      </div>
+
+      <!-- LEADERBOARD TABLE BODY -->
+      <div id="results-unlocked-container" style="display: block;">
+        <div class="table-responsive">
+          <table class="custom-table" id="leaderboard-table">
+            <thead>
+              <tr>
+                <th style="width: 80px; text-align: center;">Rank</th>
+                <th>Student Name</th>
+                <th style="width: 140px; text-align: right;">Exam Score</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-tbody">
+              <tr>
+                <td colspan="3" style="text-align: center; font-style: italic; padding: 24px 0;">
+                  Reading scoreboard logs...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; justify-content:center; margin-top:32px;">
+          <a id="back-to-dashboard-btn" href="student.html" class="btn btn-primary">
+            Return to Dashboard
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Global Footer placeholder -->
+  <div id="app-footer-placeholder"></div>
+
+  <!-- Client Script Injections -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/results.js"></script>
+
+</body>
+</html>

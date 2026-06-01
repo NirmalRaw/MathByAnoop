@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Examination - Math By Anoop</title>
+  <link rel="stylesheet" href="css/brand.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="chalkboard-theme" style="user-select: none; -webkit-user-select: none;">
+
+  <!-- Sticky Top App Bar -->
+  <div id="app-header-placeholder"></div>
+
+  <!-- Timed Examination Workspace -->
+  <main class="container" style="padding-top: 32px;">
+    
+    <div class="exam-layout">
+      
+      <!-- LEFT: ACTIVE QUESTION VIEWER -->
+      <section class="exam-main">
+        <div class="board-frame question-card" id="question-viewer-card">
+          <div class="question-meta">
+            <span id="question-number-label">Question 1 of 10</span>
+            <span id="question-marks-label">1 Mark</span>
+          </div>
+          <p class="question-text" id="active-question-text">
+            Loading examination questions...
+          </p>
+
+          <div class="options-list" id="active-question-options">
+            <!-- MCQ Option cards inject here dynamically -->
+          </div>
+
+          <div style="display:flex; justify-content:space-between; margin-top:32px;">
+            <button class="btn btn-secondary" id="prev-question-btn" onclick="navigateQuestion(-1)" disabled>
+              ← Previous Question
+            </button>
+            <button class="btn btn-primary" id="next-question-btn" onclick="navigateQuestion(1)">
+              Next Question →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: COUNTDOWN & NAVIGATION BOARD -->
+      <section class="exam-sidebar">
+        <!-- Prominent Timer Clock -->
+        <div class="board-frame timer-box" style="margin-bottom: 24px;">
+          <h4 style="margin: 0; font-size:12px; font-weight:600; color: var(--chalk-dim); text-transform:uppercase; letter-spacing:0.05em;">Remaining Time</h4>
+          <div class="timer-value" id="exam-timer-clock">00:00:00</div>
+          <small style="color:var(--chalk-dim); font-size:11px;" id="exam-timer-meta">Time is automatically synchronized</small>
+        </div>
+
+        <!-- Question Grid Navigator -->
+        <div class="board-frame" style="padding:24px; margin-bottom: 24px;">
+          <h4 style="margin: 0 0 16px 0; font-size:13px; font-weight:600; color: var(--accent); text-transform:uppercase;">Questions Index</h4>
+          
+          <div id="question-grid-navigator" style="display:grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px;">
+            <!-- Buttons 1..N inject here -->
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:11px; color:var(--chalk-dim);">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span style="display:inline-block; width:10px; height:10px; background-color:var(--accent); border-radius:3px;"></span>
+              <span>Answered Question</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span style="display:inline-block; width:10px; height:10px; border:1px solid rgba(242,239,233,0.3); border-radius:3px;"></span>
+              <span>Unanswered / Skip</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-danger" style="width:100%; padding:14px; font-size:16px; border-radius: var(--radius); box-shadow: 0 4px 20px rgba(195,107,92,0.3);" onclick="triggerManualSubmit()">
+          Submit Finished Test
+        </button>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Global Footer placeholder -->
+  <div id="app-footer-placeholder"></div>
+
+  <!-- Client Script Injections -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/test.js"></script>
+
+</body>
+</html>
